@@ -20,4 +20,9 @@ public class PersonTest {
     assertThat(male.getTelephoneNumber(), is("+01-98765"));
     assertThat(male.getFullName(), is("Ms Lucy"));
   }
+
+  @Test
+  public void testAlwaysPass() {
+    assertThat(true, is(true));
+  }
 }
