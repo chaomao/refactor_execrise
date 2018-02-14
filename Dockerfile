@@ -1,3 +1,3 @@
 FROM maven:latest
 
-COPY * /var/source
+COPY * /var/source/
