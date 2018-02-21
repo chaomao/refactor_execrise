@@ -4,12 +4,11 @@ import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.junit.Assert.*;
 
 public class TaxiTest {
   @Test
   public void TierThreeChargeMileWith10() throws Exception {
-    Taxi taxi = new Taxi(Taxi.TIER_Three);
+    Taxi taxi = new Taxi(Taxi.TIER_THREE);
     assertThat(taxi.charge(5), is(5 * 10));
   }
 
