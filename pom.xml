@@ -8,26 +8,6 @@
     <artifactId>refactor</artifactId>
     <version>1.0</version>
 
-    <properties>
-        <sonar.host.url>http://localhost:9000</sonar.host.url>
-        <sonar.login>6b138d960e34b25efbbb0248ad98b93c65988b58</sonar.login>
-        <sonar.java.source>1.8</sonar.java.source>
-        <sonar.junit.reportPaths>target/surefire-reports</sonar.junit.reportPaths>
-        <!--<sonar.jacoco.reportPaths></sonar.jacoco.reportPaths>-->
-    </properties>
-
-    <build>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.sonarsource.scanner.maven</groupId>
-                    <artifactId>sonar-maven-plugin</artifactId>
-                    <version>3.4.0.905</version>
-                </plugin>
-            </plugins>
-        </pluginManagement>
-    </build>
-
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
@@ -45,5 +25,42 @@
         </dependency>
     </dependencies>
 
-
+    <profiles>
+        <profile>
+            <id>coverage</id>
+            <properties>
+                <sonar.host.url>http://localhost:9000</sonar.host.url>
+                <sonar.login>6b138d960e34b25efbbb0248ad98b93c65988b58</sonar.login>
+                <sonar.java.source>1.8</sonar.java.source>
+                <sonar.junit.reportPaths>target/surefire-reports</sonar.junit.reportPaths>
+                <sonar.jacoco.reportPaths>target/jacoco.exec</sonar.jacoco.reportPaths>
+            </properties>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.jacoco</groupId>
+                        <artifactId>jacoco-maven-plugin</artifactId>
+                        <version>0.8.0</version>
+                        <executions>
+                            <execution>
+                                <id>prepare-agent</id>
+                                <phase>process-test-classes</phase>
+                                <goals>
+                                    <goal>prepare-agent</goal>
+                                </goals>
+                                <configuration>
+                                    <destFile>${sonar.jacoco.reportPath}</destFile>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.sonarsource.scanner.maven</groupId>
+                        <artifactId>sonar-maven-plugin</artifactId>
+                        <version>3.4.0.905</version>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>
