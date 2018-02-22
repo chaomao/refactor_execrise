@@ -25,4 +25,14 @@ public class TimeSheetTest {
     Employee employee = new Employee(true, 100, "BILL", "IT");
     assertThat(timesheet.charge(employee, 1), is(200));
   }
+
+  @Test
+  public void getNameForEmployee() {
+    assertThat(new Employee(false, 100, "name", "dt").getName(), is("name"));
+  }
+
+  @Test
+  public void getDepartmentForEmployee() {
+    assertThat(new Employee(false, 100, "name", "dt").getDepartment(), is("dt"));
+  }
 }
