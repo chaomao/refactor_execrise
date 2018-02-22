@@ -6,7 +6,14 @@
 
     <groupId>org.thoughtworks</groupId>
     <artifactId>refactor</artifactId>
+    <packaging>pom</packaging>
     <version>1.0</version>
+
+
+    <modules>
+        <module>testModule</module>
+        <module>timesheet</module>
+    </modules>
 
     <dependencies>
         <dependency>
