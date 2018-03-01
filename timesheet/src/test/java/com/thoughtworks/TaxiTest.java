@@ -9,7 +9,7 @@ public class TaxiTest {
   @Test
   public void TierThreeChargeMileWith10() throws Exception {
     Taxi taxi = new Taxi(Taxi.TIER_THREE);
-    assertThat(taxi.charge(5), is(5 * 10));
+    assertThat(taxi.charge(5), is(5 * 10 + 1));
   }
 
   @Test
