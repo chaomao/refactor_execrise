@@ -9,4 +9,8 @@ public class TestClass {
   public String toString() {
     return super.toString();
   }
+
+  public static void main(String[] args) {
+    System.out.println(new User().toString());
+  }
 }
